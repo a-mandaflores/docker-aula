@@ -121,3 +121,35 @@ Agora acessar o bash do mysql
 docker exec -it amanda-mysql bash
 ```
 Agora mesmo que paramos o conteiner todo o conteudo vai estar salvo em um volume gerenciado pelo docker facilitando nossa vida
+
+## Docker Network
+
+É interessante que os conteiners estejam no mesmo network para se conectarem entre si sem interferencias ou problemas
+
+Segue alguns comendos do docker network
+
+Listar os networks
+```
+docker network ls 
+```
+Criar um novo network
+```
+docker network create nome-do-network
+```
+Passar seu container para seu novo network
+```
+docker network connect nome-do-network nome-do-container 
+```
+Verificando o seu container
+```
+docker inspect nome-do-container
+```
+
+Provavelmente o container vai estar em duas redes, a bridge(o network padrao do docker) e o novo network que você conectou seu container
+
+Para deixa-lo somente no network que você criou
+```
+docker network disconnect nome-do-network nome-do-container
+```
+
+
